@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <div id="lab-container">
+        <h2 id="main-title">Color Palette Lab</h2>
+
+        <div class="swatch" style="width:70px; height:90px; background:rgb(25, 185, 65); display:inline-block;"></div>
+        <div class="swatch" style="width:70px; height:90px; background:rgb(238, 65, 13); display:inline-block;"></div>
+        <div class="swatch" style="width:70px; height:90px; background:rgb(98, 21, 241); display:inline-block;"></div>
+
+        <br><br>
+
+        <button>Round Corners</button>
+        <button>Add Border</button>
+        <button class="reset-trigger">Reset All</button>
+    </div>
+
+    <script>
+        {
+            // 1. getElementById: Targeting the specific title
+            const title = document.getElementById('main-title');
+
+            // 2. getElementsByClassName: Targeting all color boxes
+            const swatches = document.getElementsByClassName('swatch');
+
+            // 3. getElementsByTagName: Targeting all buttons
+            const btns = document.getElementsByTagName('button');
+
+            // 4. querySelector: Targeting the specific reset button via class
+            const resetBtn = document.querySelector('.reset-trigger');
+
+            // 5. querySelectorAll: Targeting all swatches for a bulk animation
+            const allSwatches = document.querySelectorAll('#lab-container .swatch');
+
+            // LOGIC
+            btns[0].onclick = () => {
+                for(let s of swatches) s.style.borderRadius = "100%";
+                title.innerText = "Rounded Palette";
+            };
+
+            btns[1].onclick = () => {
+                for(let s of swatches) s.style.border = "25px solid black";
+            };
+
+            resetBtn.onclick = () => {
+                allSwatches.forEach(s => {
+                    s.style.borderRadius = "0";
+                    s.style.border = "none";
+                });
+                title.innerText = "Color Palette Lab";
+            };
+        }
+    </script>
+</body>
+</html>

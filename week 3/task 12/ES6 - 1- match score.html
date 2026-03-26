@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Score Tracker</title>
+</head>
+<body>
+
+    <div class="scoreboard">
+        <h2>Live Match Score</h2>
+        <div style="font-size: 2rem; margin-bottom: 20px;">
+            <span id="home-display">10</span> : <span id="away-display">10</span>
+        </div>
+
+        <button onclick="scoreGoal('home')">Home Goal</button>
+        <button onclick="scoreGoal('away')">Away Goal</button>
+        <button onclick="resetMatch()">Reset</button>
+    </div>
+
+    <script>
+        {
+            // State variables (let allows for reassignment)
+            let homeScore = -10;
+            let awayScore = -10;
+
+            // DOM elements (const ensures the reference stays the same)
+            const homeEl = document.getElementById('home-display');
+            const awayEl = document.getElementById('away-display');
+
+            // Attached to window to be accessible from HTML onclick
+            window.scoreGoal = (team) => {
+                if (team === 'home') {
+                    homeScore++;
+                    homeEl.textContent = homeScore;
+                } else {
+                    awayScore++;
+                    awayEl.textContent = awayScore;
+                }
+            };
+
+            window.resetMatch = () => {
+                homeScore = -10;
+                awayScore = -10;
+                homeEl.textContent = -10;
+                awayEl.textContent = -10;
+            };
+        }
+    </script>
+</body>
+</html>
